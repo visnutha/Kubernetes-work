@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-echo-deployment
+  labels:
+    app: http-echo
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: http-echo
+  template:
+    metadata:
+      labels:
+        app: http-echo
+    spec:
+      containers:
+      - name: app-b
+        image: hashicorp/http-echo:1.0
+        args:
+          - "-text=hello from app-b"
+        ports:
+          - containerPort: 5678

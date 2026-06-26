@@ -1,0 +1,21 @@
+desktop-control-plane   Ready    control-plane   3d1h   v1.34.3   
+
+beta.kubernetes.io/arch=arm64,
+beta.kubernetes.io/os=linux,
+kubernetes.io/arch=arm64,
+kubernetes.io/hostname=desktop-control-plane,
+kubernetes.io/os=linux,
+node-role.kubernetes.io/control-plane=,
+node.kubernetes.io/exclude-from-external-load-balancers=
+
+desktop-worker          Ready    <none>          3d1h   v1.34.3   
+beta.kubernetes.io/arch=arm64,
+beta.kubernetes.io/os=linux,
+environment=dev,kubernetes.io/arch=arm64,
+kubernetes.io/hostname=desktop-worker,
+kubernetes.io/os=linux
+
+desktop-worker2         Ready    <none>          3d1h   v1.34.3   beta.kubernetes.io/arch=arm64,beta.kubernetes.io/os=linux,
+kubernetes.io/arch=arm64,
+kubernetes.io/hostname=desktop-worker2,
+kubernetes.io/os=linux

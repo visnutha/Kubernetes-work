@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  clientid: YzVhOTM5NjktYTE1OC00ODQxLWE0OWMtYWUyOGFmZTU2NjFk
+  clientsecret: Z35ZOFF+TjA3NmNGa0RRcGlfcUQ2UjE3dnJDRUNtMkRUMGN2fmNLMg==
+kind: Secret
+metadata:
+  name: secrets-store-creds
+  labels:
+    secrets-store.csi.k8s.io/used: "true"

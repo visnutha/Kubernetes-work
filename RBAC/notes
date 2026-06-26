@@ -1,0 +1,5 @@
+There are 4 objects in the RBAC
+1. Role
+2. RoleBining
+3. ClusteRole
+4. ClusterRoleBinding

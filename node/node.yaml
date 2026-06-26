@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-app
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      automountServiceAccountToken: false
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                  - linux
+                - key: environment
+                  operator: In
+                  values:
+                  - qa
+          # preferredDuringSchedulingIgnoredDuringExecution:
+          #   - weight: 90
+          #     preference:
+          #       matchExpressions:
+          #         - key: environment
+          #           operator: In
+          #           values:
+          #           - dev
+          #   - weight: 20
+          #     preference:
+          #       matchExpressions:
+          #       - key: kubernetes.io/hostname
+          #         operator: In
+          #         values:
+          #         - desktop-worker2
+                  
+             
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}

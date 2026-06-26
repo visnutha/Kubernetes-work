@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  # annotations:
+  #   cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: minimal-ingress
+spec:
+  tls:
+  - hosts:
+    - foo.bar.com
+    secretName: foo-bar-tls
+  rules:
+  - host: foo.bar.com
+    http:
+      paths:
+      - path: /foo
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 8080
+      - path: /boo
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service-2
+            port:
+              number: 8080
