@@ -5,7 +5,7 @@ metadata:
     app: sample-deployment
   name: sample-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: sample-deployment
@@ -15,8 +15,19 @@ spec:
       labels:
         app: sample-deployment
     spec:
+      tolerations:
+        - key: "env"
+          operator: "Exists"
+          effect: "NoSchedule"
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/os
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            foo: bar
       containers:
-      - image: myimage
-        name: myimage
+      - name: pause
+        image: registry.k8s.io/pause:3.1
         resources: {}
 status: {}
